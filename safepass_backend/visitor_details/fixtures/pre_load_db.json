@@ -414,10 +414,7 @@
         "model": "settings.appsettings",
         "pk": 1,
         "fields": {
-            "enable_mfa": true,
             "session_timeout": 60,
-            "enable_visitor_notifs": true,
-            "enable_alerts": true,
             "enable_scheduled_reminders": false,
             "max_visitors_per_day": 50,
             "max_visit_duration": 120

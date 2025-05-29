@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:safepass_frontend/common/const/app_theme/app_text_styles.dart';
 import 'package:safepass_frontend/common/const/kcolors.dart';
 import 'package:safepass_frontend/common/utils/refresh_access_token.dart';
+import 'package:safepass_frontend/common/widgets/app_circular_progress_indicator_widget.dart';
+import 'package:safepass_frontend/common/widgets/app_container_widget.dart';
+import 'package:safepass_frontend/src/dashboard/controllers/notif_controller.dart';
 import 'package:safepass_frontend/src/dashboard/widgets/app_container_widget_offset.dart';
 import 'package:safepass_frontend/src/dashboard/widgets/app_stat_card_widget.dart';
 import 'package:safepass_frontend/src/dashboard/widgets/app_visitor_logs.dart';
 import 'package:safepass_frontend/src/dashboard/models/visitor_stats_model.dart';
 import 'package:safepass_frontend/src/dashboard/services/visitor_stats_service.dart';
+import 'package:safepass_frontend/src/settings/controllers/settings_tab_notifier.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -19,11 +24,13 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   VisitorStats? _visitorStats;
   bool _isLoading = true;
+  bool allowScheduledReminders = false;
 
   @override
   void initState() {
     super.initState();
     _loadVisitorStats();
+    context.read<SettingsTabNotifier>().fetchSettings(context);
   }
 
   Future<void> _loadVisitorStats() async {
@@ -56,9 +63,64 @@ class _DashboardScreenState extends State<DashboardScreen> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         IconButton(
-          icon: const Icon(Icons.notifications_outlined),
-          onPressed: () {
-            // Handle notifications
+          icon: context.watch<NotifController>().getSeen
+            ? Icon(Icons.notifications_outlined)
+            : Icon(Icons.notifications, color: AppColors.kLightRed),
+          onPressed: () async {
+            if (allowScheduledReminders) {
+              var result = await showDialog(
+                context: context, 
+                builder:(context) {
+                  return Dialog(
+                    child: AppContainerWidget(
+                      width: 500, 
+                      height: 300, 
+                      boxShadow: [],
+                      child: Center(
+                        child: SingleChildScrollView(
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: context.read<NotifController>().getNotifs.isEmpty
+                              ? Text("No notifs yet", style: AppTextStyles.bigStyleBold)
+                              : Column(
+                                spacing: 5,
+                                children: List.generate(
+                                  context.read<NotifController>().getNotifs.length,
+                                  (index) {
+                                    return Container(
+                                      width: double.infinity,
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: AppColors.kDarkBlue
+                                        )
+                                      ),
+                                      child: Text(context.read<NotifController>().getNotifs[index])
+                                    );
+                                  }
+                                ),
+                              )
+                            ),
+                          )
+                      )
+                    ),
+                  );
+                }
+              );
+
+              if (result == null) {
+                if (context.mounted) {
+                  context.read<NotifController>().setSeen = true;
+                }
+              }
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("Scheduled reminders are disabled"),
+                  backgroundColor: AppColors.kDarkRed,
+                )
+              );
+            }
           },
           iconSize: 24,
           color: AppColors.kDarkBlue,
@@ -141,6 +203,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final ScrollController scrollController = ScrollController();
+
+    if (context.watch<SettingsTabNotifier>().getIsLoading) {
+      return Center(child: AppCircularProgressIndicatorWidget());
+    }
+
+    allowScheduledReminders = context.read<SettingsTabNotifier>().getSettings[0].enableScheduledReminders;
+    print("debug: this is the value of allow: ${allowScheduledReminders}");
 
     return Scaffold(
       backgroundColor: Colors.white,

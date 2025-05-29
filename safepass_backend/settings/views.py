@@ -23,10 +23,10 @@ class UpdateSettingsView(APIView):
 
     def post(self, request):
         updated_settings = request.data.get('updated_settings')
-        enable_mfa = updated_settings.get('enable_mfa')
+        # enable_mfa = updated_settings.get('enable_mfa')
         session_timout = updated_settings.get('session_timeout')
-        enable_visitor_notifs = updated_settings.get('enable_visitor_notifs')
-        enable_alerts = updated_settings.get('enable_alerts')
+        # enable_visitor_notifs = updated_settings.get('enable_visitor_notifs')
+        # enable_alerts = updated_settings.get('enable_alerts')
         enable_scheduled_reminders = updated_settings.get('enable_scheduled_reminders')
         max_visitors_per_day = updated_settings.get('max_visitors_per_day')
         max_visit_duration = updated_settings.get('max_visit_duration')
@@ -35,10 +35,10 @@ class UpdateSettingsView(APIView):
         
         try:
             curr_settings = models.AppSettings.objects.get(id=1)
-            curr_settings.enable_mfa = enable_mfa
+            # curr_settings.enable_mfa = enable_mfa
             curr_settings.session_timeout = session_timout
-            curr_settings.enable_visitor_notifs = enable_visitor_notifs
-            curr_settings.enable_alerts = enable_alerts
+            # curr_settings.enable_visitor_notifs = enable_visitor_notifs
+            # curr_settings.enable_alerts = enable_alerts
             curr_settings.enable_scheduled_reminders = enable_scheduled_reminders
             curr_settings.max_visitors_per_day = max_visitors_per_day
             curr_settings.max_visit_duration = max_visit_duration

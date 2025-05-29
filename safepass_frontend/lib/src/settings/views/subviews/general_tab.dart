@@ -61,7 +61,7 @@ class _GeneralTabState extends State<GeneralTab> {
         if (initialSettings != null) {
           setState(() {
             securitySettings = Security(
-              enableMultiFactorAuth: initialSettings.enableMfa,
+              // enableMultiFactorAuth: initialSettings.enableMfa,
               sessionTimeout: sessionTimeoutOptionsModel.dropdownOptions
                   .firstWhere(
                     (e) => e.value == initialSettings.sessionTimeout.toString(),
@@ -71,8 +71,8 @@ class _GeneralTabState extends State<GeneralTab> {
                   ),
             );
             notificationsSettings = Notifications(
-              enableVisitorNotifications: initialSettings.enableVisitorNotifs,
-              enableAlerts: initialSettings.enableAlerts,
+              // enableVisitorNotifications: initialSettings.enableVisitorNotifs,
+              // enableAlerts: initialSettings.enableAlerts,
               enableScheduledReminders: initialSettings.enableScheduledReminders,
             );
             visitorsSettings = Visitors(
@@ -164,20 +164,20 @@ class _GeneralTabState extends State<GeneralTab> {
             GeneralSettingsGroup(
               title: "Security",
               subItems: [
-                SubItemWidget(
-                  title: "Enable Multi-Factor Authentication",
-                  action: AppSwitchWidget(
-                    value: securitySettings!.enableMultiFactorAuth, // Use the state variable
-                    onChanged: (value) {
-                      setState(() {
-                        print("debug: prev value ${securitySettings!.enableMultiFactorAuth}");
-                        securitySettings!.enableMultiFactorAuth = value; // Update the state variable directly
-                        print("debug: new value $value");
-                        print("debug: set value ${securitySettings!.enableMultiFactorAuth}");
-                      });
-                    },
-                  ),
-                ),
+                // SubItemWidget(
+                //   title: "Enable Multi-Factor Authentication",
+                //   action: AppSwitchWidget(
+                //     value: securitySettings!.enableMultiFactorAuth, // Use the state variable
+                //     onChanged: (value) {
+                //       setState(() {
+                //         print("debug: prev value ${securitySettings!.enableMultiFactorAuth}");
+                //         securitySettings!.enableMultiFactorAuth = value; // Update the state variable directly
+                //         print("debug: new value $value");
+                //         print("debug: set value ${securitySettings!.enableMultiFactorAuth}");
+                //       });
+                //     },
+                //   ),
+                // ),
                 SubItemWidget(
                   title: "Session Timeout\n(in minutes)",
                   action: AppDropdownButtonFormFieldWidget(
@@ -216,28 +216,28 @@ class _GeneralTabState extends State<GeneralTab> {
             GeneralSettingsGroup(
               title: "Notifications",
               subItems: [
-                SubItemWidget(
-                  title: "Enable Visitor Notifications",
-                  action: AppSwitchWidget(
-                    value: notificationsSettings!.enableVisitorNotifications,
-                    onChanged: (value) {
-                      setState(() {
-                        notificationsSettings!.enableVisitorNotifications = value;
-                      });
-                    },
-                  ),
-                ),
-                SubItemWidget(
-                  title: "Enable Alerts",
-                  action: AppSwitchWidget(
-                    value: notificationsSettings!.enableAlerts,
-                    onChanged: (value) {
-                      setState(() {
-                        notificationsSettings!.enableAlerts = value;
-                      });
-                    },
-                  ),
-                ),
+                // SubItemWidget(
+                //   title: "Enable Visitor Notifications",
+                //   action: AppSwitchWidget(
+                //     value: notificationsSettings!.enableVisitorNotifications,
+                //     onChanged: (value) {
+                //       setState(() {
+                //         notificationsSettings!.enableVisitorNotifications = value;
+                //       });
+                //     },
+                //   ),
+                // ),
+                // SubItemWidget(
+                //   title: "Enable Alerts",
+                //   action: AppSwitchWidget(
+                //     value: notificationsSettings!.enableAlerts,
+                //     onChanged: (value) {
+                //       setState(() {
+                //         notificationsSettings!.enableAlerts = value;
+                //       });
+                //     },
+                //   ),
+                // ),
                 SubItemWidget(
                   title: "Enable Scheduled Reminders",
                   action: AppSwitchWidget(
@@ -327,11 +327,11 @@ class _GeneralTabState extends State<GeneralTab> {
                     onTap: () {
                       context.read<SettingsTabNotifier>().updateSettings(
                             context: context,
-                            enableMfa: securitySettings!.enableMultiFactorAuth,
+                            // enableMfa: securitySettings!.enableMultiFactorAuth,
                             sessionTimeout: securitySettings!.sessionTimeout.value,
-                            enableVisitorNotifs:
-                                notificationsSettings!.enableVisitorNotifications,
-                            enableAlerts: notificationsSettings!.enableAlerts,
+                            // enableVisitorNotifs:
+                                // notificationsSettings!.enableVisitorNotifications,
+                            // enableAlerts: notificationsSettings!.enableAlerts,
                             enableScheduledReminders:
                                 notificationsSettings!.enableScheduledReminders,
                             maxVisitorsPerDay:

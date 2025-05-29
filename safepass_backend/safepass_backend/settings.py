@@ -152,7 +152,7 @@ AUTH_USER_MODEL = 'custom_user.CustomUser'
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(seconds=5),
     'ACCESS_TOKEN': 'access_token',
-    "REFRESH_TOKEN_LIFETIME": timedelta(hours=12),
+    # "REFRESH_TOKEN_LIFETIME": timedelta(hours=12),
     'REFRESH_TOKEN': 'refresh_token',
     "AUTH_HEADER_TYPES": ('Bearer',),
 

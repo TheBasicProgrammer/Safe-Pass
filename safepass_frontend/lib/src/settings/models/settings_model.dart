@@ -65,45 +65,45 @@ class Exports {
 }
 
 class Notifications {
-    bool enableVisitorNotifications;
-    bool enableAlerts;
+    // bool enableVisitorNotifications;
+    // bool enableAlerts;
     bool enableScheduledReminders;
 
     Notifications({
-        required this.enableVisitorNotifications,
-        required this.enableAlerts,
+        // required this.enableVisitorNotifications,
+        // required this.enableAlerts,
         required this.enableScheduledReminders,
     });
 
     factory Notifications.fromJson(Map<String, dynamic> json) => Notifications(
-        enableVisitorNotifications: json["enable_visitor_notifications"],
-        enableAlerts: json["enable_alerts"],
+        // enableVisitorNotifications: json["enable_visitor_notifications"],
+        // enableAlerts: json["enable_alerts"],
         enableScheduledReminders: json["enable_scheduled_reminders"],
     );
 
     Map<String, dynamic> toJson() => {
-        "enable_visitor_notifications": enableVisitorNotifications,
-        "enable_alerts": enableAlerts,
+        // "enable_visitor_notifications": enableVisitorNotifications,
+        // "enable_alerts": enableAlerts,
         "enable_scheduled_reminders": enableScheduledReminders,
     };
 }
 
 class Security {
-    bool enableMultiFactorAuth;
+    // bool enableMultiFactorAuth;
     DropdownOption sessionTimeout;
 
     Security({
-        required this.enableMultiFactorAuth,
+        // required this.enableMultiFactorAuth,
         required this.sessionTimeout,
     });
 
     factory Security.fromJson(Map<String, dynamic> json) => Security(
-        enableMultiFactorAuth: json["enable_multi_factor_auth"],
+        // enableMultiFactorAuth: json["enable_multi_factor_auth"],
         sessionTimeout: DropdownOption.fromJson(json["session_timeout"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "enable_multi_factor_auth": enableMultiFactorAuth,
+        // "enable_multi_factor_auth": enableMultiFactorAuth,
         "session_timeout": sessionTimeout.toJson(),
     };
 }

@@ -117,10 +117,10 @@ class SettingsTabNotifier with ChangeNotifier {
 
   Future<void> updateSettings({
     required BuildContext context,
-    required bool enableMfa,
+    // required bool enableMfa,
     required String sessionTimeout,
-    required bool enableVisitorNotifs,
-    required bool enableAlerts,
+    // required bool enableVisitorNotifs,
+    // required bool enableAlerts,
     required bool enableScheduledReminders,
     required String maxVisitorsPerDay,
     required String maxVisitDuration
@@ -140,10 +140,10 @@ class SettingsTabNotifier with ChangeNotifier {
         },
         body: jsonEncode({
           "updated_settings": {
-            "enable_mfa": enableMfa,
+            // "enable_mfa": enableMfa,
             "session_timeout": sessionTimeout,
-            "enable_visitor_notifs": enableVisitorNotifs,
-            "enable_alerts": enableAlerts,
+            // "enable_visitor_notifs": enableVisitorNotifs,
+            // "enable_alerts": enableAlerts,
             "enable_scheduled_reminders": enableScheduledReminders,
             "max_visitors_per_day": maxVisitorsPerDay,
             "max_visit_duration": maxVisitDuration
@@ -167,7 +167,7 @@ class SettingsTabNotifier with ChangeNotifier {
         }
       } else if (response.statusCode == 401) {
         if (context.mounted) {
-          await refetch(context, fetch: () => updateSettings(context: context, enableMfa: enableMfa, sessionTimeout: sessionTimeout, enableVisitorNotifs: enableVisitorNotifs, enableAlerts: enableAlerts, enableScheduledReminders: enableScheduledReminders, maxVisitorsPerDay: maxVisitorsPerDay, maxVisitDuration: maxVisitDuration));
+          await refetch(context, fetch: () => updateSettings(context: context, sessionTimeout: sessionTimeout, enableScheduledReminders: enableScheduledReminders, maxVisitorsPerDay: maxVisitorsPerDay, maxVisitDuration: maxVisitDuration));
         }
       } else {
         if (context.mounted) {

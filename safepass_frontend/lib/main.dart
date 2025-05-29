@@ -9,6 +9,7 @@ import 'package:safepass_frontend/src/check_in/controller/visit-purpose_controll
 import 'package:safepass_frontend/src/check_in/controller/visitor_search_controller.dart';
 import 'package:safepass_frontend/src/check_out/controller/check_out_controller.dart';
 import 'package:safepass_frontend/src/check_out/repository/check_out_repository.dart';
+import 'package:safepass_frontend/src/dashboard/controllers/notif_controller.dart';
 import 'package:safepass_frontend/src/entrypoint/controllers/sidebar_notifier.dart';
 import 'package:safepass_frontend/src/registration/controller/id_types_controller.dart';
 import 'package:safepass_frontend/src/settings/controllers/settings_tab_notifier.dart';
@@ -31,6 +32,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => VisitorDetailsController()),
       ChangeNotifierProvider(create: (_) => VisitorSearchController()),
       ChangeNotifierProvider(create: (_) => CheckOutController()),
+      ChangeNotifierProvider(create: (_) => NotifController()),
     ],
     child: MyApp()
   ));

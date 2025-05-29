@@ -6,10 +6,10 @@ class AppSettings(models.Model):
     #     CSV = '.csv'
     #     XLS = '.xls/.xlsx'
 
-    enable_mfa = models.BooleanField(default=True)
+    # enable_mfa = models.BooleanField(default=True)
     session_timeout = models.IntegerField(default=60)
-    enable_visitor_notifs = models.BooleanField(default=True)
-    enable_alerts = models.BooleanField(default=True)
+    # enable_visitor_notifs = models.BooleanField(default=True)
+    # enable_alerts = models.BooleanField(default=True)
     enable_scheduled_reminders = models.BooleanField(default=False)
     max_visitors_per_day = models.IntegerField(default=50)
     max_visit_duration = models.IntegerField(default=120)

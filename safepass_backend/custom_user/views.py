@@ -9,10 +9,13 @@ from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import TokenRefreshView
 from . import serializers
 from rest_framework.serializers import ValidationError
+from settings import models as settings_models
+from datetime import timedelta
 
 
-def get_tokens_for_user(user):
+def get_tokens_for_user(user, exp):
     refresh = RefreshToken.for_user(user)
+    refresh.set_exp(lifetime=exp)
     return {
         'refresh': str(refresh),
         'access': str(refresh.access_token),
@@ -21,6 +24,7 @@ def get_tokens_for_user(user):
 class CustomLoginView(APIView):
     permission_classes = [AllowAny]
     def post(self, request):
+        refresh_exp = timedelta(minutes=settings_models.AppSettings.objects.get(id=1).session_timeout)
         # User credentials from request
         data = request.data.get("credentials")
         response = Response()
@@ -30,7 +34,7 @@ class CustomLoginView(APIView):
         user = authenticate(email=email, password=password)
         if user is not None:
             if user.is_active:
-                data = get_tokens_for_user(user)
+                data = get_tokens_for_user(user, refresh_exp)
                 # TODO: store tokens in db
                 response.set_cookie(
                     key=settings.SIMPLE_JWT['ACCESS_TOKEN'],
@@ -43,7 +47,7 @@ class CustomLoginView(APIView):
                 response.set_cookie(
                     key=settings.SIMPLE_JWT['REFRESH_TOKEN'],
                     value=data['refresh'],
-                    expires=settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME'],
+                    expires=refresh_exp,
                     secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
                     httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
                     samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
