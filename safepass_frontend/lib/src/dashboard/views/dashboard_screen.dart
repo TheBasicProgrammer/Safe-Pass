@@ -8,6 +8,9 @@ import 'package:safepass_frontend/src/dashboard/widgets/app_stat_card_widget.dar
 import 'package:safepass_frontend/src/dashboard/widgets/app_visitor_logs.dart';
 import 'package:safepass_frontend/src/dashboard/models/visitor_stats_model.dart';
 import 'package:safepass_frontend/src/dashboard/services/visitor_stats_service.dart';
+import 'package:safepass_frontend/src/logs/controllers/visitorlogs_controller.dart';
+import 'package:provider/provider.dart';
+// hello just to git add.
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -24,6 +27,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void initState() {
     super.initState();
     _loadVisitorStats();
+    Future.microtask(() => context.read<VisitorLogsController>().getVisitorLogs(context));
   }
 
   Future<void> _loadVisitorStats() async {

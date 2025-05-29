@@ -1,6 +1,15 @@
 {
     "version": "0.2.0",
     "configurations": [
+<<<<<<< HEAD
+        {
+            "name": "safepass_frontend",
+            "cwd": "safepass_frontend",
+            "request": "launch",
+            "type": "dart",
+            "args": ["-d", "edge", "--web-port", "5000"],
+        }
+=======
       {
         "name": "safepass_frontend",
         "cwd": "safepass_frontend",
@@ -12,6 +21,7 @@
           "--web-port", "5000"
         ]
       }
+>>>>>>> 94428b79b5b3ad1433909f0fb3e6f8e30b941159
     ]
   }
   
