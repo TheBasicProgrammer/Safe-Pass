@@ -16,6 +16,76 @@
             "user_permissions": []
         }
     },
+
+      {
+        "model": "visitor_details.visitordetails",
+        "pk": 5,
+        "fields": {
+            "photo": "default_photo/no_photo.png",
+            "first_name": "Carlos",
+            "middle_name": "Dizon",
+            "last_name": "Reyes",
+            "full_name": "Carlos Dizon Reyes",
+            "contact_number": "09175556666",
+            "id_type": 1,
+            "id_number": "DL-1234567890ABCDE",
+            "status": "Approved",
+            "registration_date": "2025-05-29T08:15:00.000Z"
+        }
+    },
+
+    {
+        "model": "visitor_details.visitordetails",
+        "pk": 6,
+        "fields": {
+            "photo": "default_photo/no_photo.png",
+            "first_name": "Liza",
+            "middle_name": "Tan",
+            "last_name": "Villanueva",
+            "full_name": "Liza Tan Villanueva",
+            "contact_number": "09178889999",
+            "id_type": 2,
+            "id_number": "P-1122334455AABBCC",
+            "status": "Approved",
+            "registration_date": "2025-05-29T09:00:00.000Z"
+        }
+    },
+
+    {
+    "model": "visitor_details.visitordetails",
+    "pk": 7,
+    "fields": {
+        "photo": "default_photo/no_photo.png",
+        "first_name": "Miguel",
+        "middle_name": "Lopez",
+        "last_name": "Fernandez",
+        "full_name": "Miguel Lopez Fernandez",
+        "contact_number": "09179998888",
+        "id_type": 5,
+        "id_number": "PIC-445566778899",
+        "status": "Approved",
+        "registration_date": "2025-05-29T07:45:00.000Z"
+    }
+},
+
+{
+    "model": "visitor_details.visitordetails",
+    "pk": 8,
+    "fields": {
+        "photo": "default_photo/no_photo.png",
+        "first_name": "Andrea",
+        "middle_name": "Gomez",
+        "last_name": "Torres",
+        "full_name": "Andrea Gomez Torres",
+        "contact_number": "09176667777",
+        "id_type": 6,
+        "id_number": "PI-998877665544",
+        "status": "Approved",
+        "registration_date": "2025-05-29T08:00:00.000Z"
+    }
+},
+
+    
     {
         "model": "visitor_details.idtypes",
         "pk": 1,
@@ -410,6 +480,35 @@
             "status": 1
         }
     },
+
+
+        {
+        "model": "visitor_logs.visitor_logs",
+        "pk": 16,
+        "fields": {
+            "log_datetime": "2025-05-29T08:30:00Z",
+            "visitor_details": 5,
+            "check_in": "08:30:00",
+            "check_out": null,
+            "visit_date": "2025-05-29",
+            "purpose": 3,
+            "status": 1
+        }
+    },
+
+     {
+        "model": "visitor_logs.visitor_logs",
+        "pk": 17,
+        "fields": {
+            "log_datetime": "2025-05-29T09:15:00Z",
+            "visitor_details": 6,
+            "check_in": "09:15:00",
+            "check_out": null,
+            "visit_date": "2025-05-29",
+            "purpose": 2,
+            "status": 1
+        }
+    },
     {
         "model": "settings.appsettings",
         "pk": 1,
@@ -419,5 +518,91 @@
             "max_visitors_per_day": 50,
             "max_visit_duration": 120
         }
+
+    },
+
+{
+    "model": "visitor_logs.visitor_logs",
+    "pk": 19,
+    "fields": {
+        "log_datetime": "2025-05-29T08:00:00Z",
+        "visitor_details": 8,
+        "check_in": "08:00:00",
+        "check_out": "09:30:00",
+        "visit_date": "2025-05-29",
+        "purpose": 5,
+        "status": 2
     }
+},
+
+{
+    "model": "visitor_logs.visitor_logs",
+    "pk": 20,
+    "fields": {
+        "log_datetime": "2025-05-29T08:00:00Z",
+        "visitor_details": 8,
+        "check_in": "08:00:00",
+        "check_out": "15:30:00",
+        "visit_date": "2025-05-29",
+        "purpose": 5,
+        "status": 2
+    }
+},
+
+{
+    "model": "visitor_logs.visitor_logs",
+    "pk": 21,
+    "fields": {
+        "log_datetime": "2025-05-29T08:00:00Z",
+        "visitor_details": 8,
+        "check_in": "08:00:00",
+        "check_out": "15:30:00",
+        "visit_date": "2025-05-29",
+        "purpose": 5,
+        "status": 2
+    }
+},
+
+{
+    "model": "visitor_logs.visitor_logs",
+    "pk": 22,
+    "fields": {
+        "log_datetime": "2025-05-29T08:00:00Z",
+        "visitor_details": 8,
+        "check_in": "08:00:00",
+        "check_out": "15:30:00",
+        "visit_date": "2025-05-29",
+        "purpose": 5,
+        "status": 2
+    }
+},
+
+{
+    "model": "visitor_logs.visitor_logs",
+    "pk": 23,
+    "fields": {
+        "log_datetime": "2025-05-29T08:00:00Z",
+        "visitor_details": 8,
+        "check_in": "08:00:00",
+        "check_out": "15:30:00",
+        "visit_date": "2025-05-29",
+        "purpose": 5,
+        "status": 2
+    }
+},
+
+{
+    "model": "visitor_logs.visitor_logs",
+    "pk": 24,
+    "fields": {
+        "log_datetime": "2025-05-29T08:00:00Z",
+        "visitor_details": 8,
+        "check_in": "08:00:00",
+        "check_out": "15:30:00",
+        "visit_date": "2025-05-29",
+        "purpose": 5,
+        "status": 2
+    }
+}
+
 ]

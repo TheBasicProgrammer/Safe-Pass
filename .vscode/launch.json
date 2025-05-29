@@ -1,17 +1,13 @@
 {
     "version": "0.2.0",
     "configurations": [
-      {
-        "name": "safepass_frontend",
-        "cwd": "safepass_frontend",
-        "request": "launch",
-        "type": "dart",
-        "args": [
-          "-d", "web-server",
-          "--web-hostname", "localhost",
-          "--web-port", "5000"
-        ]
-      }
+        {
+            "name": "safepass_frontend",
+            "cwd": "safepass_frontend",
+            "request": "launch",
+            "type": "dart",
+            "args": ["-d", "chrome", "--web-port", "5000"],
+        }
     ]
   }
   
